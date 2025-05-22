@@ -54,8 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Usar a função addToCart existente
         addToCart(item.productType, item.price, item.image);
         
-        // Mostra mensagem de sucesso
-        alert('Alarme de Incêndio adicionado ao carrinho!');
+        
     });
 
     // Formatar CPF automaticamente
@@ -77,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartItemsContainer.style.display = 'none';
         document.querySelector('.cart-footer').style.display = 'none';
         paymentForm.style.display = 'block';
+        cartDialog.style.display = 'none'; // Fecha o carrinho ao clicar em finalizar compra
     });
 
     // Voltar para o carrinho
@@ -98,7 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Limpar carrinho
         cartItems = [];
         cartCount = 0;
+        cartTotal = 0; // <-- Adicione esta linha para zerar o total
         updateCartCount();
+        updateCartTotal(); // <-- Atualiza o total exibido
         updateCartDisplay();
         
         // Fechar modal
@@ -177,8 +179,11 @@ function updateCartDisplay() {
 }
 
 function removeFromCart(index) {
+    // Subtrai o valor do item removido do total
+    cartTotal -= cartItems[index].price;
     cartItems.splice(index, 1);
     cartCount--;
     updateCartCount();
+    updateCartTotal(); // Atualiza o total exibido
     updateCartDisplay();
 }

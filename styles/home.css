@@ -1,3 +1,30 @@
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideLeft {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -6,6 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: fadeInPage 0.8s ease;
 }
 
 header {
@@ -14,6 +42,7 @@ header {
     align-items: center;
     padding: 20px 40px;
     overflow: hidden;
+    animation: fadeSlideIn 1s ease;
 }
 
 .button-section {
@@ -21,6 +50,8 @@ header {
     width: 100%;  /* Changed from 300px to full width */
     display: flex;
     justify-content: center; /* Changed from left to center */
+    animation: fadeSlideIn 1s ease 0.3s;
+    animation-fill-mode: both;
 }
 
 .button-group {
@@ -97,6 +128,9 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    animation: fadeSlideIn 1s ease;
+    animation-fill-mode: both;
+    animation-delay: 0.5s;
 }
 
 .camera-container:hover {
@@ -132,6 +166,9 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    animation: fadeSlideIn 1s ease;
+    animation-fill-mode: both;
+    animation-delay: 0.9s;
 }
 
 .alarm-container:hover {
@@ -168,6 +205,9 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
+    animation: fadeSlideIn 1s ease;
+    animation-fill-mode: both;
+    animation-delay: 0.7s;
 }
 
 .fire-container:hover {
@@ -401,7 +441,7 @@ header {
 
 h1 {
     white-space: nowrap;
-    animation: slideRight 8s linear infinite;
+    animation: slideLeft 8s linear infinite;
     position: relative;
     color: #1f5feb;
 }
@@ -623,4 +663,21 @@ h1 {
 .buy-btn::before {
     content: '🛒 ';
     margin-right: 8px;
+}
+
+/* Adiciona um badge de unidades disponíveis */
+.units-badge {
+    display: block;
+    position: absolute;
+    top: 55px;
+    right: 20px;
+    background: #ffc107;
+    color: #333;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.15);
+    text-align: center;
+    margin-top: 10px;
 }
